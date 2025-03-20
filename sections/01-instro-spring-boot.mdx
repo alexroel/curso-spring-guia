@@ -1,0 +1,330 @@
+# Introducción a Spring Boot
+
+1. [Introducción](#introducción)
+2. [¿Qué es Pring Framework?](#qué-es-pring-framework)
+3. [Creando aplicación](#creando-aplicación)
+4. [Hola Mundo con Spring Boot](#hola-mundo-con-spring-boot)
+5. [Parámetros de consulta](#parámetros-de-consulta)
+6. [Parámetros de ruta](#parámetros-de-ruta)
+7. [Creando un controlador](#creando-un-controlador)
+8. [Configurar Spring Boot](#configurar-spring-boot)
+9. [Resumen](#resumen)
+
+---
+## Introducción
+
+
+---
+## ¿Qué es Pring Framework?
+
+Spring Framework es un marco de trabajo para el desarrollo de aplicaciones Java. Proporciona una amplia gama de características y herramientas para facilitar el desarrollo de aplicaciones empresariales, incluyendo:
+
+- Inyección de dependencias: Permite gestionar las dependencias entre los componentes de la aplicación de manera sencilla y flexible.
+- Programación orientada a aspectos: Permite separar la lógica de negocio de la lógica transversal, como la gestión de transacciones o la seguridad.
+- Soporte para la creación de aplicaciones web: Proporciona herramientas para crear aplicaciones web, incluyendo soporte para MVC (Modelo-Vista-Controlador) y RESTful APIs.
+- Integración con otras tecnologías: Spring Framework se integra fácilmente con otras tecnologías y marcos de trabajo, como Hibernate, JPA, JMS, entre otros.
+- Soporte para pruebas: Proporciona herramientas y bibliotecas para facilitar la creación de pruebas unitarias y de integración.
+- Soporte para la creación de aplicaciones reactivas: Permite crear aplicaciones que responden a eventos y flujos de datos de manera asíncrona y no bloqueante.
+- Soporte para la creación de microservicios: Facilita la creación y gestión de aplicaciones distribuidas y microservicios.
+
+**Diferencias entre Spring y Spring Boot**
+
+Spring Boot es una extensión de Spring Framework que simplifica el proceso de configuración y despliegue de aplicaciones. Algunas de las diferencias clave son:
+- **Configuración automática**: Spring Boot proporciona una configuración automática que reduce la necesidad de configuración manual. Esto significa que puedes empezar a desarrollar aplicaciones más rápidamente sin tener que preocuparte por la configuración inicial.
+
+- **Opiniones predeterminadas**: Spring Boot viene con una serie de opiniones predeterminadas sobre cómo estructurar y configurar tu aplicación. Esto ayuda a los desarrolladores a seguir las mejores prácticas sin tener que investigar y decidir por sí mismos.
+
+
+---
+## Creando aplicación
+
+Para crear una aplicación Spring Boot, puedes utilizar el sitio web [Spring Initializr](https://start.spring.io/). Este generador de proyectos te permite crear un proyecto básico de Spring Boot con las dependencias necesarias.
+
+- **Project**: Elige el tipo de proyecto que deseas crear. Puedes elegir entre Maven o Gradle.
+- **Language**: Selecciona el lenguaje de programación que deseas utilizar. Puedes elegir entre Java, Kotlin o Groovy.
+- **Spring Boot**: Selecciona la versión de Spring Boot que deseas utilizar. Generalmente, es recomendable utilizar la última versión estable.
+
+- **Project Metadata**: Completa la información del proyecto, como el nombre del grupo, el nombre del artefacto, la descripción y la versión.
+    
+    - **Group**: El nombre del grupo o paquete de tu aplicación. Por ejemplo, `com.example`.
+    - **Artifact**: El nombre del artefacto o módulo de tu aplicación. Por ejemplo, `holamundo`.
+    - **Name**: El nombre de tu aplicación. Por ejemplo, `Hola Mundo`.
+    - **Description**: Una breve descripción de tu aplicación. Por ejemplo, `Una aplicación de ejemplo con Spring Boot`.
+    - **Package name**: El nombre del paquete base de tu aplicación. Por ejemplo, `com.example.holamundo`.
+    - **Packaging**: Elige el tipo de empaquetado que deseas utilizar. Puedes elegir entre JAR o WAR.
+    - **Java**: Selecciona la versión de Java que deseas utilizar. Asegúrate de que sea compatible con la versión de Spring Boot que has seleccionado.
+
+- **Dependencies**: Selecciona las dependencias que deseas incluir en tu proyecto. Puedes buscar y seleccionar las dependencias que necesites, como Spring Web, Spring Data JPA, Thymeleaf, entre otras.
+    - **Spring Web**: Para crear aplicaciones web y RESTful APIs.
+
+- **Generate**: Haz clic en el botón "Generate" para descargar un archivo ZIP con tu proyecto Spring Boot.
+- **Explore**: Usa la opción "Explore" para ver el proyecto la estructura del proyecto y los archivos generados.
+
+    - `.gitattributes`: Archivo de configuración de Git que define cómo se deben tratar ciertos archivos en el repositorio.
+    - `.gitignore`: Archivo que especifica qué archivos o directorios deben ser ignorados por Git al realizar un commit.
+    - `HELP.md`: Archivo de ayuda que proporciona información sobre el proyecto y cómo utilizarlo.
+    - `build.gradle`: Archivo de configuración de Gradle que define las dependencias y la configuración del proyecto.
+    - `gradle`: Carpeta que contiene los archivos de configuración de Gradle.
+    - `gradlew`: Script para ejecutar Gradle en sistemas Unix/Linux.
+    - `gradlew.bat`: Script para ejecutar Gradle en sistemas Windows.
+    - `settings.gradle`: Archivo de configuración de Gradle que define la configuración del proyecto.
+    - `src`: Carpeta que contiene el código fuente de la aplicación.
+        - `main`: Carpeta que contiene el código fuente principal de la aplicación.
+            - `java`: Carpeta que contiene el código fuente Java de la aplicación.
+                - `com`: Carpeta que contiene los paquetes de la aplicación.
+                    - `example`: Carpeta que contiene el paquete base de la aplicación.
+                        - `holamundo`: Carpeta que contiene el paquete específico de la aplicación.
+                            - `HolaMundoApplication.java`: Clase principal de la aplicación Spring Boot.
+            - `resources`: Carpeta que contiene los recursos de la aplicación, como archivos de configuración y plantillas.
+                - `application.properties`: Archivo de configuración de la aplicación Spring Boot.
+                - `static`: Carpeta que contiene archivos estáticos, como CSS, JavaScript e imágenes.
+                - `templates`: Carpeta que contiene las plantillas de la aplicación, como archivos HTML.
+    - `test`: Carpeta que contiene las pruebas de la aplicación.
+        - `java`: Carpeta que contiene el código fuente de las pruebas de la aplicación.
+            - `com`: Carpeta que contiene los paquetes de las pruebas de la aplicación.
+                - `example`: Carpeta que contiene el paquete base de las pruebas de la aplicación.
+                    - `holamundo`: Carpeta que contiene el paquete específico de las pruebas de la aplicación.
+                        - `HolaMundoApplicationTests.java`: Clase de prueba para la clase principal de la aplicación Spring Boot.
+               
+---
+## Hola Mundo con Spring Boot
+
+Descarga el archivo ZIP y descomprímelo en tu máquina local. Abre el proyecto en tu IDE favorito (como IntelliJ IDEA o Eclipse).
+
+Para abrir el proyecto en IntelliJ IDEA, sigue estos pasos:
+1. Abre IntelliJ IDEA y selecciona "Open" en la pantalla de inicio.
+2. Navega hasta la carpeta donde descomprimiste el proyecto y ingresa en la carpeta del proyecto y seleciona `build.gradle` o `pom.xml` (dependiendo de si elegiste Maven o Gradle).
+3. Haz clic en "OK" para abrir el proyecto.
+4. IntelliJ IDEA descargará automáticamente las dependencias y configurará el proyecto.
+5. Una vez que el proyecto esté abierto, verás la estructura del proyecto en el panel izquierdo.
+6. Abre la clase `HolaMundoApplication.java` en la carpeta `src/main/java/com/example/holamundo`.
+7. Esta clase contiene el método `main`, que es el punto de entrada de la aplicación Spring Boot.
+
+```java
+package com.example.holamundo;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class HolaMundoApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(HolaMundoApplication.class, args);
+    }
+
+}
+```
+
+Ahora vamos modificar la clase `HolaMundoApplication.java` para crear un controlador simple que devuelva un saludo.
+
+```java
+...
+
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@SpringBootApplication
+@RestController
+public class HolaMundoApplication {
+
+    @GetMapping("/hola")
+    public String Hola() {
+        return "<h1>¡Hola Mundo con Spring Boot!</h1>";
+    }
+
+    public static void main(String[] args) {
+        SpringApplication.run(HolaMundoApplication.class, args);
+    }
+
+}
+```
+
+En este código, hemos agregado un controlador REST que maneja las solicitudes GET a la ruta `/`. Cuando se accede a esta ruta, devuelve el mensaje "¡Hola Mundo con Spring Boot!".
+
+Para ejecutar la aplicación, abre una terminal en la carpeta del proyecto y ejecuta el siguiente comando:
+
+```bash
+./gradlew bootRun
+```
+
+o en Windows:
+
+```bash
+gradlew.bat bootRun
+```
+
+Esto iniciará el servidor embebido de Spring Boot y podrás acceder a la aplicación en tu navegador web en la dirección `http://localhost:8080/`. Deberías ver el mensaje "¡Hola Mundo con Spring Boot!".
+
+
+---
+## Parametros de consulta
+
+Puedes agregar parámetros de consulta a la ruta para personalizar el saludo. Modifica el método `holaMundo` en la clase `HolaMundoApplication.java` de la siguiente manera:
+
+```java
+...
+import org.springframework.web.bind.annotation.RequestParam;
+
+@SpringBootApplication
+@RestController
+public class HolaMundoApplication {
+
+    @GetMapping("/hola")
+    public String Hola(@RequestParam(value = "nombre", defaultValue = "Mundo") String nombre) {
+        return "<h1>¡Hola " + nombre + "!</h1>";
+    }
+
+    public static void main(String[] args) {
+        SpringApplication.run(HolaMundoApplication.class, args);
+    }
+
+}
+```
+
+En este código, hemos agregado un parámetro de consulta llamado `nombre`. Si no se proporciona un valor para `nombre`, se utilizará el valor predeterminado "Mundo". Ahora, si accedes a la ruta `http://localhost:8080/?nombre=Juan`, verás el mensaje "¡Hola Juan!".
+
+---
+## Paramétros de ruta
+
+Parametro de ruta es una forma de pasar información a la aplicación a través de la URL. Puedes definir parámetros de ruta en la anotación `@GetMapping` utilizando llaves `{}`. Para esto vamos agregar un nuevo endpoint que va ser `Adios`.
+
+```java
+...
+
+import org.springframework.web.bind.annotation.PathVariable;
+
+...
+@SpringBootApplication
+@RestController
+public class HolaMundoApplication {
+
+    @GetMapping("/hola")
+    public String Hola(@RequestParam(value = "nombre", defaultValue = "Mundo") String nombre) {
+        return "<h1>¡Hola " + nombre + "!</h1>";
+    }
+
+    @GetMapping("/adios/{nombre}")
+    public String Adios(@PathVariable String nombre) {
+        return "<h1>¡Adiós " + nombre + "!</h1>";
+    }
+
+    public static void main(String[] args) {
+        SpringApplication.run(HolaMundoApplication.class, args);
+    }
+
+}
+```
+
+En este código, hemos agregado un nuevo endpoint `/adios/{nombre}` que utiliza un parámetro de ruta llamado `nombre`. Cuando accedes a la ruta `http://localhost:8080/adios/Juan`, verás el mensaje "¡Adiós Juan!".
+
+---
+## Creando un controlador
+
+Para crear un controlador en Spring Boot, puedes crear una nueva clase en el paquete `com.example.holamundo` y anotarla con `@RestController`. Luego, puedes definir métodos que manejen las solicitudes HTTP utilizando anotaciones como `@GetMapping`, `@PostMapping`, `@PutMapping`, etc.
+
+También puedes utilizar la anotación `@RequestMapping` para definir la ruta base del controlador. Por ejemplo:
+
+Para esto vamos a crear un nuevo paquete `controller` y una nueva clase `SaludoController`.
+
+```java
+
+package com.example.holamundo.controller;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestParam;
+
+@RestController
+@RequestMapping("/saludo")
+public class SaludoController {
+
+    @GetMapping("/hola")
+    public String Hola(@RequestParam(value = "nombre", defaultValue = "Mundo") String nombre) {
+        return "<h1>¡Hola " + nombre + "!</h1>";
+    }
+
+    @GetMapping("/adios/{nombre}")
+    public String Adios(@PathVariable String nombre) {
+        return "<h1>¡Adiós " + nombre + "!</h1>";
+    }
+
+}
+```
+
+En este código, hemos creado un nuevo controlador `SaludoController` que maneja las solicitudes a la ruta `/saludo`. Hemos definido dos métodos: `Hola` y `Adios`, que manejan las solicitudes GET a las rutas `/saludo/hola` y `/saludo/adios/{nombre}`, respectivamente.
+Puedes acceder a estos endpoints en tu navegador web. Por ejemplo, para acceder al saludo, puedes ir a `http://localhost:8080/saludo/hola?nombre=Juan` y verás el mensaje "¡Hola Juan!". Para despedirte, puedes ir a `http://localhost:8080/saludo/adios/Juan` y verás el mensaje "¡Adiós Juan!".
+
+---
+## Configurar Spring Boot
+
+Para configurar Spring Boot, puedes utilizar el archivo `application.properties` o `application.yml` en la carpeta `src/main/resources`. En este archivo, puedes definir diversas propiedades de configuración para tu aplicación, como el puerto del servidor, la configuración de la base de datos, entre otros.
+
+Dentro de `application.properties`, puedes agregar propiedades como:
+
+```properties
+spring.application.name=Hola Mundo
+server.port=9090
+server.servlet.context-path=/api
+```
+- `spring.application.name=Hola Mundo` establece el nombre de la aplicación. 
+- `server.port=9090` establece el puerto del servidor en 9090. 
+- `server.servlet.context-path=/api` establece el contexto de la aplicación en `/api`.
+
+En este ejemplo, hemos configurado el nombre de la aplicación, el puerto del servidor y el contexto de la aplicación. Ahora, si inicias la aplicación, podrás acceder a ella en `http://localhost:9090/api/saludo/hola?nombre=Juan`.
+
+Vamos crear dos nuevos archivos `application-dev.properties` y `application-prod.properties` para definir diferentes configuraciones para los entornos de desarrollo y producción. Puedes utilizar perfiles de Spring Boot para activar una configuración específica según el entorno.
+
+`application-dev.properties`:
+
+```properties
+spring.application.name=Hola Mundo - Desarrollo
+server.port=9090
+server.servlet.context-path=/api
+```
+
+`application-prod.properties`:
+
+```properties
+spring.application.name=Hola Mundo - Producción
+server.port=8080
+server.servlet.context-path=/api
+```
+
+Para activar un perfil específico, puedes utilizar la propiedad `spring.profiles.active` en el archivo `application.properties` o pasarla como argumento al iniciar la aplicación. Por ejemplo:
+
+```properties
+spring.profiles.active=dev
+```
+
+O al iniciar la aplicación desde la línea de comandos:
+
+```bash
+java -jar holamundo.jar --spring.profiles.active=prod
+```
+
+Esto activará el perfil de producción y utilizará la configuración definida en `application-prod.properties`.
+
+---
+## Resumen
+
+En este tutorial, hemos aprendido los conceptos básicos de Spring Boot y cómo crear una aplicación simple. Hemos cubierto los siguientes temas:
+- Introducción a Spring Boot y sus características.
+- Creación de una aplicación Spring Boot utilizando Spring Initializr.
+- Creación de un controlador REST simple.
+- Uso de parámetros de consulta y parámetros de ruta.
+- Configuración de la aplicación utilizando `application.properties` y perfiles de Spring Boot.
+- Creación de un controlador separado para manejar las solicitudes.
+
+
+
+
+
+
+
+
+
+
+
